@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logoView" />
 
     <EditText
-        android:id="@+id/loginEmailField"
+        android:id="@+id/email"
         android:layout_width="326dp"
         android:layout_height="64dp"
         android:layout_marginTop="30dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginHeading" />
 
     <EditText
-        android:id="@+id/loginPasswordField"
+        android:id="@+id/password"
         android:layout_width="326dp"
         android:layout_height="64dp"
         android:autofillHints=""
@@ -55,7 +55,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmailField" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Button
         android:id="@+id/loginButton"
@@ -68,7 +68,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordField"
+        app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
