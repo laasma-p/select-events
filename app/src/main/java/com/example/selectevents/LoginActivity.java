@@ -77,8 +77,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
             } else {
                 Toast.makeText(LoginActivity.this,
-                        "Failed to log in. Please check your credentials",
+                        "Failed to log in. Please check your credentials.",
                         Toast.LENGTH_LONG).show();
+                loginProgressBar.setVisibility(View.GONE);
             }
         });
     }
