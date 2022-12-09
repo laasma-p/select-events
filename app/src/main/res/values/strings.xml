@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">SelectEvents</string>
+    <string name="app_name">Select Events</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="select_logo">Select Logo</string>
+    <string name="log_in">Log In</string>
+    <string name="delete_profile">Delete Profile</string>
+    <string name="log_out">Log Out</string>
+    <string name="view_pager">View Pager</string>
+    <string name="tab_layout">Tab Layout</string>
+    <string name="label_first_name">First Name:</string>
+    <string name="label_last_name">Last Name:</string>
+    <string name="label_phone_number">Phone Number:</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="label_email">Email:</string>
 </resources>
