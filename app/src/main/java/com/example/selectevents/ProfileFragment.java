@@ -1,5 +1,7 @@
 package com.example.selectevents;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class ProfileFragment extends Fragment {
     private static final String TAG = ".ProfileFragment";
@@ -38,6 +45,11 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         Button logoutButton = view.findViewById(R.id.logoutButton);
+        Button deleteProfileButton = view.findViewById(R.id.deleteProfileButton);
+        ProgressBar deleteProgressBar = view.findViewById(R.id.deleteProgressBar);
+
+        // For displaying the data from Firebase
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         setupFirebaseListener();
 
@@ -46,18 +58,48 @@ public class ProfileFragment extends Fragment {
             FirebaseAuth.getInstance().signOut();
         });
 
-        // For displaying the data from Firebase
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        // Deleting a user from database
+        deleteProfileButton.setOnClickListener(v -> {
+            Log.d(TAG, "Deleting user...");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setTitle("Are you sure?");
+            dialog.setMessage("Deleting this account will result in completely removing all data.");
+            dialog.setPositiveButton("Delete", (dialog1, which) -> {
+                deleteProfileButton.setVisibility(View.VISIBLE);
+                assert user != null;
+                user.delete().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getActivity(), "Account successfully deleted!",
+                                Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        deleteProgressBar.setVisibility(View.GONE);
+                    } else {
+                        Toast.makeText(getActivity(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+                        deleteProgressBar.setVisibility(View.GONE);
+                    }
+
+                });
+
+            });
+
+            dialog.setNegativeButton("Dismiss", (dialog12, which) -> dialog12.dismiss());
+
+            AlertDialog alertDialog = dialog.create();
+            alertDialog.show();
+
+        });
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         assert user != null;
         String userID = user.getUid();
 
-        final TextView firstNameTextView = (TextView) view.findViewById(R.id.firstName);
-        final TextView lastNameTextView = (TextView) view.findViewById(R.id.lastName);
-        final TextView emailTextView = (TextView) view.findViewById(R.id.email);
-        final TextView phoneNumberTextView = (TextView) view.findViewById(R.id.phoneNumber);
-
+        final TextView firstNameTextView = view.findViewById(R.id.firstName);
+        final TextView lastNameTextView = view.findViewById(R.id.lastName);
+        final TextView emailTextView = view.findViewById(R.id.email);
+        final TextView phoneNumberTextView = view.findViewById(R.id.phoneNumber);
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
