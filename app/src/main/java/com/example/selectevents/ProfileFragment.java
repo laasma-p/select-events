@@ -43,6 +43,7 @@ public class ProfileFragment extends Fragment {
 
         Button logoutButton = view.findViewById(R.id.logoutButton);
         Button deleteProfileButton = view.findViewById(R.id.deleteProfileButton);
+        Button editProfileButton = view.findViewById(R.id.editProfileButton);
         ProgressBar deleteProgressBar = view.findViewById(R.id.deleteProgressBar);
 
         // For displaying the data from Firebase
@@ -54,6 +55,8 @@ public class ProfileFragment extends Fragment {
             Log.d(TAG, "Attempting to log out the user.");
             FirebaseAuth.getInstance().signOut();
         });
+
+        editProfileButton.setOnClickListener(v -> startActivity(new Intent(getActivity(), EditProfileActivity.class)));
 
         // Deleting a user from database
         deleteProfileButton.setOnClickListener(v -> {
