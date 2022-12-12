@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class EventsFragment extends Fragment {
     RecyclerView eventList;
@@ -33,6 +32,7 @@ public class EventsFragment extends Fragment {
 
     DatabaseReference reference;
     ArrayList<Event> eventArrayList;
+    FloatingActionButton floatingActionButton;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -46,6 +46,16 @@ public class EventsFragment extends Fragment {
 
         // Finding Recycler View
         eventList = view.findViewById(R.id.rv);
+
+        // Finding FAB
+        floatingActionButton = view.findViewById(R.id.floatingActionButton);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddEvent.newInstance().show(getParentFragmentManager(), AddEvent.TAG);
+            }
+        });
 
         reference = FirebaseDatabase.getInstance().getReference("events");
 
