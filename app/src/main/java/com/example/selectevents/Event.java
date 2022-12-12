@@ -4,7 +4,6 @@ public class Event {
 
     String title, description, time, date;
 
-
     public Event() {}
 
     public Event(String title, String description, String time, String date) {
