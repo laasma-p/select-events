@@ -1,8 +1,7 @@
 package com.example.selectevents;
 
 public class Event {
-
-    String title, description, time, date;
+    String title, description, time, date, eventId;
 
     public Event() {}
 
@@ -29,4 +28,11 @@ public class Event {
         return date;
     }
 
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
 }

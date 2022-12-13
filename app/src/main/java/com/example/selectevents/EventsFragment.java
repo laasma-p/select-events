@@ -75,6 +75,9 @@ public class EventsFragment extends Fragment {
                     Event event = itemSnapshot.getValue(Event.class);
                     eventList.add(event);
 
+                    assert event != null;
+                    event.setEventId(itemSnapshot.getKey());
+
                     eventAdapter.notifyDataSetChanged();
                 }
 
