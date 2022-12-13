@@ -3,19 +3,20 @@ package com.example.selectevents;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,67 +24,65 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EventsFragment extends Fragment {
-    RecyclerView eventList;
-    EventAdapter eventAdapter;
-
-    FirebaseAuth mAuth;
-
-    DatabaseReference reference;
-    ArrayList<Event> eventArrayList;
     FloatingActionButton floatingActionButton;
 
+    RecyclerView rv;
+    List<Event> eventList;
+    DatabaseReference reference;
+
+    ValueEventListener valueEventListener;
+
+    // Getting specific user
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     public EventsFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
-        // Finding Recycler View
-        eventList = view.findViewById(R.id.rv);
-
-        // Finding FAB
+        // Find FAB in the view
         floatingActionButton = view.findViewById(R.id.floatingActionButton);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddEvent.newInstance().show(getParentFragmentManager(), AddEvent.TAG);
-            }
-        });
+        floatingActionButton.setOnClickListener(v -> AddEvent.newInstance().show(getParentFragmentManager(), AddEvent.TAG));
 
-        reference = FirebaseDatabase.getInstance().getReference("events");
+        // Finding Recycler View
+        rv = view.findViewById(R.id.rv);
 
-        eventList.hasFixedSize();
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        eventList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rv.hasFixedSize();
 
-        eventArrayList = new ArrayList<>();
-        eventAdapter = new EventAdapter(getActivity(), eventArrayList);
+        eventList = new ArrayList<>();
 
-        eventList.setAdapter(eventAdapter);
+        EventAdapter eventAdapter = new EventAdapter(getActivity(), eventList);
 
-        reference.addValueEventListener(new ValueEventListener() {
+        rv.setAdapter(eventAdapter);
+
+        reference = FirebaseDatabase.getInstance().getReference("events").child(user.getUid());
+
+        valueEventListener = reference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                eventList.clear();
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    Event event = itemSnapshot.getValue(Event.class);
+                    eventList.add(event);
 
-                    Event event = dataSnapshot.getValue(Event.class);
-                    eventArrayList.add(event);
+                    eventAdapter.notifyDataSetChanged();
                 }
 
-                eventAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Do nothing
             }
         });
 
@@ -107,5 +106,4 @@ public class EventsFragment extends Fragment {
                 this, // LifecycleOwner
                 callback);
     }
-
 }
