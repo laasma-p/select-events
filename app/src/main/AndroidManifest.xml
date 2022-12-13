@@ -63,6 +63,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <!-- Event Details Activity -->
+        <activity
+            android:name=".EventDetailsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
     </application>
 
 </manifest>
