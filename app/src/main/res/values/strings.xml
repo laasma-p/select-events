@@ -17,4 +17,7 @@
     <string name="label_phone_number">Phone Number:</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="label_email">Email:</string>
+    <string name="recycler_view">Recycler View</string>
+    <string name="fab">FAB</string>
+    <string name="save">Save</string>
 </resources>
