@@ -8,101 +8,93 @@
 
     <TextView
         android:id="@+id/firstNameLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/lato"
         android:text="@string/label_first_name"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/phoneNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/lato"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
 
     <TextView
         android:id="@+id/phoneNumberLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/lato"
         android:text="@string/label_phone_number"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/email"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lato"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
 
     <TextView
         android:id="@+id/emailLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/lato"
         android:text="@string/label_email"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastName" />
 
     <TextView
         android:id="@+id/lastName"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lato"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameLabel" />
 
     <TextView
         android:id="@+id/lastNameLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/lato"
         android:text="@string/label_last_name"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstName" />
 
     <TextView
         android:id="@+id/firstName"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lato"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
 

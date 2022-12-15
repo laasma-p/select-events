@@ -8,44 +8,50 @@
 
     <TextView
         android:id="@+id/detailsTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
-        android:text="Title"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/title"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/detailsDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:text="Description here"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/description"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintTop_toBottomOf="@+id/detailsTitle" />
 
     <TextView
         android:id="@+id/detailsTime"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Time"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/time"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsDescription" />
 
     <TextView
         android:id="@+id/detailsDate"
-        android:layout_width="wrap_content"
+        android:layout_width="326dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Date"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/date"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsTime" />
 
@@ -54,23 +60,27 @@
         android:layout_width="326dp"
         android:layout_height="64dp"
         android:layout_marginBottom="44dp"
-        android:text="Delete Event"
+        android:text="@string/delete_event"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEventButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/editEventButton"
         android:layout_width="326dp"
         android:layout_height="64dp"
         android:layout_marginTop="72dp"
-        android:text="Edit Event"
+        android:text="@string/edit_event"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsDate" />
+        app:layout_constraintTop_toBottomOf="@+id/detailsDate"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
