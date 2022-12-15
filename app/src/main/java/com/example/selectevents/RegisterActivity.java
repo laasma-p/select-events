@@ -2,6 +2,7 @@ package com.example.selectevents;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -108,9 +109,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         .addOnCompleteListener(task1 -> {
                             if (task1.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "User has been successfully registered!", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+
                                 registerProgressBar.setVisibility(View.GONE);
 
-                                // Redirect to log in
+                                finish();
+
                             } else {
                                 Toast.makeText(RegisterActivity.this, "Failed to register - try again", Toast.LENGTH_LONG).show();
                                 registerProgressBar.setVisibility(View.GONE);
