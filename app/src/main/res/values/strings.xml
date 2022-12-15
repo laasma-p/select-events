@@ -20,4 +20,13 @@
     <string name="recycler_view">Recycler View</string>
     <string name="fab">FAB</string>
     <string name="save">Save</string>
+    <string name="add">Add</string>
+    <string name="description">Description</string>
+    <string name="time">Time</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="number_of_attendees">Number of attendees:</string>
+    <string name="join">Join</string>
+    <string name="delete_event">Delete Event</string>
+    <string name="edit_event">Edit Event</string>
 </resources>
